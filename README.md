@@ -20,7 +20,7 @@ The terminal implements the SDK's cryptographic modules to manage relay identiti
 
 ## Upcoming Feature Roadmap
 
-The following modules are currently in development to further enhance the merchant experience:
+The following modules are currently under development to further enhance the merchant experience:
 
 ### P2P Merchant Sell (Offramp) Module
 A comprehensive peer-to-peer offramp engine that will allow merchants to convert their USDC earnings directly into INR bank accounts. This module will utilize the SDK's escrow logic to lock USDC and verify UPI/IMPS bank transfers, providing a seamless bridge between crypto earnings and fiat liquidity.
