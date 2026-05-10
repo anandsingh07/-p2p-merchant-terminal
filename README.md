@@ -1,4 +1,4 @@
-# BharatSwap Merchant Terminal: Advanced P2P Integration
+# M.P2P Merchant Terminal: Advanced P2P Integration
 
 A high-performance Virtual Point of Sale (vPOS) terminal engineered to interface with the P2P.me protocol. This terminal facilitates secure, decentralized USDC settlements for retail merchants using the Base Sepolia blockchain.
 

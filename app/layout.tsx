@@ -9,7 +9,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "BharatSwap | P2P Merchant Terminal",
+  title: "M.P2P | Merchant Terminal",
   description: "Instant USDC settlement for Indian merchants via P2P.me",
 };
 

@@ -118,7 +118,7 @@ export default function BharatSwapTerminal() {
         <div className="p-6 pb-2 flex justify-between items-start gap-4">
           <div>
             <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-emerald-200 bg-clip-text text-transparent">
-              BharatSwap
+              M.P2P
             </h1>
             <p className="text-zinc-500 text-sm font-medium">Merchant Terminal</p>
           </div>
