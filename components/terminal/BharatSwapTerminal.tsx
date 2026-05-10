@@ -27,6 +27,7 @@ import { baseSepolia } from 'thirdweb/chains';
 // Constants
 const USDC_ADDRESS = '0x036CbD53842c5426634e7929541eC2318f3dCF7e'; // Native USDC on Base Sepolia
 const CHAIN_ID = 84532; // Base Sepolia
+const BRAND_BLUE = '#2B8DFC';
 
 export default function BharatSwapTerminal() {
   const account = useActiveAccount();
@@ -101,10 +102,10 @@ export default function BharatSwapTerminal() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans p-4 md:p-8 flex flex-col items-center justify-center selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-[#050505] text-white font-sans p-4 md:p-8 flex flex-col items-center justify-center selection:bg-[#2B8DFC]/30">
       
       {/* Background Glow */}
-      <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#2B8DFC]/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-gold-600/5 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Main Container */}
@@ -117,7 +118,7 @@ export default function BharatSwapTerminal() {
         {/* Header */}
         <div className="p-6 pb-2 flex justify-between items-start gap-4">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-emerald-200 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-[#2B8DFC] to-[#73b2ff] bg-clip-text text-transparent">
               M.P2P
             </h1>
             <p className="text-zinc-500 text-sm font-medium">Merchant Terminal</p>
@@ -128,15 +129,15 @@ export default function BharatSwapTerminal() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setShowHistory(true)}
-                className="p-2 bg-zinc-900 rounded-full border border-zinc-800 text-zinc-400 hover:text-emerald-400"
+                className="p-2 bg-zinc-900 rounded-full border border-zinc-800 text-zinc-400 hover:text-[#2B8DFC]"
               >
                 <Clock size={18} />
               </motion.button>
             )}
             {isConnected && mounted && (
-              <div className="flex items-center gap-2 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20">
-                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-                <span className="text-xs font-bold text-emerald-400">{Number(balance).toFixed(2)} USDC</span>
+              <div className="flex items-center gap-2 bg-[#2B8DFC]/10 px-3 py-1.5 rounded-full border border-[#2B8DFC]/20">
+                <div className="w-1.5 h-1.5 bg-[#2B8DFC] rounded-full animate-pulse" />
+                <span className="text-xs font-bold text-[#2B8DFC]">{Number(balance).toFixed(2)} USDC</span>
               </div>
             )}
             <ConnectButton 
@@ -159,7 +160,7 @@ export default function BharatSwapTerminal() {
             className="flex justify-center items-center whitespace-nowrap gap-10"
           >
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+              <div className="w-1.5 h-1.5 bg-[#2B8DFC] rounded-full animate-pulse" />
               <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Live Rate</span>
               <span className="text-sm font-bold text-zinc-200">1 USDC = ₹{rate?.toFixed(2) || '91.00'}</span>
             </div>
@@ -175,13 +176,13 @@ export default function BharatSwapTerminal() {
             </div>
           )}
           <div className="relative w-full text-center group">
-            <span className="absolute left-0 top-1/2 -translate-y-1/2 text-2xl text-zinc-600 font-medium">₹</span>
+            <span className="absolute left-0 top-1/2 -translate-y-1/2 text-2xl text-zinc-600 font-medium group-focus-within:text-[#2B8DFC] transition-colors">₹</span>
             <div className="text-6xl font-bold tracking-tighter truncate px-8 h-20 flex items-center justify-center">
               {inrAmount || '0'}
               <motion.span 
                 animate={{ opacity: [1, 0] }}
                 transition={{ repeat: Infinity, duration: 0.8 }}
-                className="w-1 h-12 bg-emerald-500 ml-1 rounded-full"
+                className="w-1 h-12 bg-[#2B8DFC] ml-1 rounded-full"
               />
             </div>
           </div>
@@ -216,7 +217,7 @@ export default function BharatSwapTerminal() {
             whileTap={{ scale: 0.98 }}
             onClick={() => !isConnected ? connect({ client }) : handleGenerateQR()}
             disabled={status !== 'IDLE' || (isConnected && (!inrAmount || Number(inrAmount) === 0))}
-            className="w-full h-16 bg-emerald-600 hover:bg-emerald-500 disabled:bg-zinc-800 disabled:text-zinc-600 rounded-3xl font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20 transition-all"
+            className="w-full h-16 bg-[#2B8DFC] hover:bg-[#1a76e3] disabled:bg-zinc-800 disabled:text-zinc-600 rounded-3xl font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-[#2B8DFC]/20 transition-all"
           >
             {!isConnected ? (
               <><Wallet size={20} /> Connect Wallet</>
@@ -237,22 +238,22 @@ export default function BharatSwapTerminal() {
               exit={{ opacity: 0 }}
               className="absolute inset-0 z-50 bg-[#050505]/95 backdrop-blur-xl flex flex-col items-center justify-center p-8"
             >
-              <button onClick={reset} className="absolute top-6 right-6 p-2 rounded-full bg-zinc-800 text-zinc-400 hover:text-white">
+              <button onClick={reset} className="absolute top-6 right-6 p-2 rounded-full bg-zinc-800 text-zinc-400 hover:text-white transition-colors" >
                 <X size={20} />
               </button>
 
               {status === 'WAITING' && (
                 <>
-                  <div className="bg-white p-6 rounded-[2rem] shadow-[0_0_50px_rgba(16,185,129,0.2)]">
+                  <div className="bg-white p-6 rounded-[2rem] shadow-[0_0_50px_rgba(43,141,252,0.2)]">
                     <QRCodeSVG value={qrValue} size={200} level="H" />
                   </div>
                   <div className="mt-8 text-center">
                     <h3 className="text-xl font-bold mb-2">Scan to Pay</h3>
                     <p className="text-zinc-500 text-sm mb-6 max-w-[200px] mx-auto">
-                      Scan with any wallet to pay <span className="text-emerald-400 font-bold">{usdcAmount} USDC</span>
+                      Scan with any wallet to pay <span className="text-[#2B8DFC] font-bold">{usdcAmount} USDC</span>
                     </p>
                     <div className="flex items-center justify-center gap-2">
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-[#2B8DFC] rounded-full animate-pulse" />
                       <span className="text-xs text-zinc-400 uppercase tracking-widest font-bold">Waiting for settlement...</span>
                     </div>
                   </div>
@@ -265,12 +266,12 @@ export default function BharatSwapTerminal() {
                   animate={{ scale: 1, opacity: 1 }}
                   className="text-center"
                 >
-                  <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 size={48} className="text-emerald-500" />
+                  <div className="w-24 h-24 bg-[#2B8DFC]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 size={48} className="text-[#2B8DFC]" />
                   </div>
                   <h3 className="text-3xl font-bold mb-2">Payment Received!</h3>
                   <p className="text-zinc-400 mb-8">₹{inrAmount} settled as {usdcAmount} USDC</p>
-                  <button onClick={reset} className="px-8 py-3 bg-zinc-800 hover:bg-zinc-700 rounded-full font-bold">
+                  <button onClick={reset} className="px-8 py-3 bg-zinc-800 hover:bg-zinc-700 rounded-full font-bold transition-colors">
                     Done
                   </button>
                 </motion.div>
@@ -292,7 +293,7 @@ export default function BharatSwapTerminal() {
           >
             <div className="p-6 border-b border-zinc-900 flex justify-between items-center">
               <h2 className="text-xl font-bold">Transaction History</h2>
-              <button onClick={() => setShowHistory(false)} className="p-2 text-zinc-500 hover:text-white">
+              <button onClick={() => setShowHistory(false)} className="p-2 text-zinc-500 hover:text-white transition-colors">
                 <X size={20} />
               </button>
             </div>
@@ -304,15 +305,15 @@ export default function BharatSwapTerminal() {
                 <div className="text-center py-20 text-zinc-600">No transactions yet</div>
               ) : (
                 history.map((tx) => (
-                  <div key={tx.id} className="p-4 bg-zinc-900/50 rounded-2xl border border-zinc-800/50 flex justify-between items-center">
+                  <div key={tx.id} className="p-4 bg-zinc-900/50 rounded-2xl border border-zinc-800/50 flex justify-between items-center hover:border-[#2B8DFC]/30 transition-all">
                     <div className="flex gap-3 items-center">
-                      <div className={`w-10 h-10 ${tx.type === 'RECEIVED' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'} rounded-full flex items-center justify-center`}>
+                      <div className={`w-10 h-10 ${tx.type === 'RECEIVED' ? 'bg-[#2B8DFC]/10 text-[#2B8DFC]' : 'bg-red-500/10 text-red-500'} rounded-full flex items-center justify-center`}>
                         {tx.type === 'RECEIVED' ? <ArrowDown size={18} /> : <ArrowUp size={18} />}
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
                           <p className="font-bold">₹{tx.inrValue}</p>
-                          <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${tx.type === 'RECEIVED' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}`}>
+                          <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold ${tx.type === 'RECEIVED' ? 'bg-[#2B8DFC]/20 text-[#2B8DFC]' : 'bg-red-500/20 text-red-400'}`}>
                             {tx.type}
                           </span>
                         </div>
@@ -334,7 +335,7 @@ export default function BharatSwapTerminal() {
       {/* Footer */}
       <p className="mt-8 text-zinc-600 text-[10px] uppercase tracking-[0.2em] font-bold flex items-center gap-2">
         <AlertCircle size={10} />
-        BharatSwap Secure Terminal • Base Sepolia
+        M.P2P Secure Terminal • Base Sepolia
       </p>
     </div>
   );
