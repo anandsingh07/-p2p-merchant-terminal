@@ -69,7 +69,7 @@ export function useMerchantHistory(merchantAddress: string | undefined) {
           )
           .map((e: any) => {
             const isReceived = e.args.to?.toLowerCase() === merchantAddress.toLowerCase();
-            const val = formatUnits(e.args.value || 0n, 6);
+            const val = formatUnits(e.args.value || BigInt(0), 6);
             const dateStr = blockMap[e.blockNumber.toString()] || new Date().toISOString();
             const dateObj = new Date(dateStr);
             
@@ -82,7 +82,7 @@ export function useMerchantHistory(merchantAddress: string | undefined) {
               fullDate: dateObj.toLocaleDateString(),
               inrValue: (Number(val) * 91).toFixed(2),
               type: isReceived ? 'RECEIVED' : 'SENT',
-            };
+            } as Transaction;
           });
       };
 

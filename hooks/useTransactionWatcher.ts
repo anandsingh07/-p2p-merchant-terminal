@@ -23,7 +23,7 @@ export function useTransactionWatcher(
     const expectedValue = parseUnits(expectedAmount, 6);
     // Allow for a tiny 1% margin or just check if it's >= expected
     // Most wallets will pay exactly or slightly more due to rounding
-    const minAcceptable = (expectedValue * 999n) / 1000n; 
+    const minAcceptable = (expectedValue * BigInt(999)) / BigInt(1000); 
 
     const unwatch = publicClient.watchEvent({
       address: USDC_ADDRESS,
@@ -33,7 +33,7 @@ export function useTransactionWatcher(
       },
       onLogs: (logs) => {
         for (const log of logs) {
-          const received = log.args.value ?? 0n;
+          const received = log.args.value ?? BigInt(0);
           console.log(`Detected Transfer: ${received} | Expected: ${expectedValue}`);
           
           if (received >= minAcceptable) {
