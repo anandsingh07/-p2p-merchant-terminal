@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BharatSwap Merchant Terminal
 
-## Getting Started
+A professional Virtual Point of Sale (vPOS) terminal designed for merchants to accept USDC payments on the Base Sepolia testnet with real-time INR conversion.
 
-First, run the development server:
+## Technology Stack
 
-```bash
+- Core Framework: Next.js 15 (App Router)
+- Web3 Integration: Thirdweb SDK
+- P2P Protocol: P2P.me SDK (@p2pdotme/sdk)
+- Blockchain Interaction: Viem
+- UI/Animations: Framer Motion and Lucide React
+- Styling: Tailwind CSS
+
+## P2P.me SDK Integration
+
+The terminal leverages the P2P.me SDK to handle the financial logic and protocol interactions:
+
+1. Price Feeds (usePrices):
+The application uses the SDK's price module to fetch the live on-chain exchange rate between INR and USDC. This ensures that the merchant always requests the correct amount of crypto based on the current market value.
+
+2. Fee Configuration (useOrders):
+The terminal integrates the getFeeConfig method to retrieve protocol fee structures. This allows the system to calculate any small-order fixed fees or percentage-based protocol costs before generating the payment QR code.
+
+3. SdkProvider:
+The entire application is wrapped in a centralized SdkProvider configured for the Base Sepolia network. This manages the connection to the Diamond contract (0xce868398fdadca368eac203222874d6888532ae2) and the official USDC contract.
+
+4. Profile Management:
+Uses the Profile module to monitor merchant balances and transaction limits directly from the P2P protocol facets.
+
+## Local Development Setup
+
+Follow these steps to set up the terminal on your local machine:
+
+### 1. Clone the Repository
+git clone https://github.com/anandsingh07/-p2p-merchant-terminal.git
+cd -p2p-merchant-terminal
+
+### 2. Install Dependencies
+npm install
+
+### 3. Environment Configuration
+Create a .env.local file in the root directory and add your Thirdweb Client ID:
+NEXT_PUBLIC_THIRDWEB_CLIENT_ID=your_client_id_here
+
+### 4. Run the Application
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The terminal will be available at http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment and Network
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application is currently configured for the Base Sepolia Testnet (Chain ID: 84532). Ensure your wallet is connected to this network to view balances and receive transaction notifications.
